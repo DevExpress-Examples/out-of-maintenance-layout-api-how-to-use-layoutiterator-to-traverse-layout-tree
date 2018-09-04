@@ -1,0 +1,70 @@
+<dx:ThemedWindow
+    x:Class="WPFLayoutAPISimpleExample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:WPFLayoutAPISimpleExample"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dxre="http://schemas.devexpress.com/winfx/2008/xaml/richedit"
+    xmlns:dxo="http://schemas.devexpress.com/winfx/2008/xaml/office"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxlc="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    Title="DXRichEdit LayoutIterator Example" Height="700" Width="1100"
+   WindowState="Maximized" TitleAlignment="Center">
+
+    <DockPanel>
+        <DockPanel>
+            <StackPanel>
+                <dxlc:GroupBox Header="Iterator Options">
+                    <dxe:ListBoxEdit  x:Name="rgLevel" Height="100" VerticalAlignment="Top" EditValue="Traverse Entire Tree">
+                        <dxe:ListBoxEdit.StyleSettings>
+                            <dxe:RadioListBoxEditStyleSettings/>
+                        </dxe:ListBoxEdit.StyleSettings>
+                        <dxe:ListBoxEditItem Content="Traverse Entire Tree"/>
+                        <dxe:ListBoxEditItem Content="Limit Traversal Depth"/>
+                        <dxe:ListBoxEditItem Content="Stay in Parent Node and Limit Traversal Depth"/>
+                    </dxe:ListBoxEdit>
+                </dxlc:GroupBox>
+                <dxlc:GroupBox Header="Limit Level" Height="160" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                    <dxe:ComboBoxEdit x:Name="cmbLayoutLevel" VerticalAlignment="Top"/>
+                </dxlc:GroupBox>
+            </StackPanel>
+        </DockPanel>
+
+        <Grid>
+            <dxre:RichEditControl CommandBarStyle="Ribbon" x:Name="richEditControl1">
+                <dxre:RichEditControl.RibbonActions>
+                    <dxb:InsertAction Index="0" ContainerName="{x:Static dxre:DefaultBarItemNames.RibbonCategory_Default}">
+                        <dxr:RibbonPage x:Name="RibbonPage_LayoutWalkthrough" Caption="Layout Walkthrough" IsSelected="True">
+                            <dxr:RibbonPageGroup Caption="Layout Iterator">
+                                <dxb:BarButtonItem Content="Start Over" 
+                              LargeGlyph="{dx:DXImageOffice2013 Image=historyitem_32x32.png}"
+                               ItemClick="btnStartOver_ItemClick"/>
+                                <dxb:BarButtonItem Content="Start Here" 
+                              LargeGlyph="{dx:DXImageOffice2013 Image=movedown_32x32.png}"
+                               ItemClick="btnStartHere_ItemClick"/>
+                                <dxb:BarButtonItem Content="Set Range" 
+                              LargeGlyph="{dx:DXImageOffice2013 Image=fontsize_32x32.png}"
+                               ItemClick="btnSetRange_ItemClick"/>
+                                <dxb:BarButtonItem Content="Move Previous" 
+                              LargeGlyph="{dx:DXImageOffice2013 Image=backward_32x32.png}"
+                               ItemClick="btnMovePrev_ItemClick"/>
+                                <dxb:BarButtonItem Content="Move Next" 
+                              LargeGlyph="{dx:DXImageOffice2013 Image=forward_32x32.png}"
+                               ItemClick="btnMoveNext_ItemClick"/>
+
+                            </dxr:RibbonPageGroup>
+                            <dxr:RibbonPageGroup>
+                                <dxb:BarStaticItem x:Name="infoElement" ItemWidth="300" ContentAlignment="Center"/>
+                            </dxr:RibbonPageGroup>
+                        </dxr:RibbonPage>
+                    </dxb:InsertAction>
+
+                </dxre:RichEditControl.RibbonActions>
+            </dxre:RichEditControl>
+
+        </Grid>
+    </DockPanel>
+</dx:ThemedWindow>
